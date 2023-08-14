@@ -1,0 +1,72 @@
+﻿@page "/produto"
+@using BlazorApp_Razor.Shared.Entity
+@using System.Globalization;
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dados do Produto</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        .produto-container {
+            border: 1px solid #ccc;
+            padding: 10px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        .label {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h3>Exemplo de Produto</h3>
+
+    <div class="produto-container">
+        <div class="label">ID:</div>
+        <div id="produto-id">@Violao.Id</div>
+        
+        <div class="label">Nome:</div>
+        <div id="produto-nome">@Violao.Nome</div>
+        
+        <div class="label">Preço:</div>
+        <div id="produto-preco">@Violao.Preco.ToString("N2", new CultureInfo("pt-BR"))</div>
+        
+        <div class="label">Data de Cadastro:</div>
+        <div id="produto-data">@Violao.DataCadastro.ToString("dd/MM/yyyy")</div>
+        
+        <div class="label">Ativo:</div>
+        <div id="produto-ativo">@Violao.Ativo</div>
+    </div>
+
+    <hr />
+    
+</body>
+</html>
+
+
+
+@code {
+
+    public Produto Violao { get { return GetProduto(); } }
+
+    private Produto GetProduto()
+    {
+        return new Produto
+            {
+                Id = 1,
+                Nome = "Violão",
+                Preco = 2500.00m,               
+                DataCadastro = DateTime.Now,
+                Ativo = true
+            };
+    }
+
+}
+
