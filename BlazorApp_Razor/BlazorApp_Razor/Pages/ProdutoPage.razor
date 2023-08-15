@@ -30,23 +30,68 @@
 
     <div class="produto-container">
         <div class="label">ID:</div>
-        <div id="produto-id">@Violao.Id</div>
+        <div id="produto-id">@Produto.Id</div>
         
         <div class="label">Nome:</div>
-        <div id="produto-nome">@Violao.Nome</div>
+        <div id="produto-nome">@Produto.Nome</div>
         
         <div class="label">Preço:</div>
-        <div id="produto-preco">@Violao.Preco.ToString("N2", new CultureInfo("pt-BR"))</div>
+        <div id="produto-preco">@Produto.Preco.ToString("N2", new CultureInfo("pt-BR"))</div>
         
         <div class="label">Data de Cadastro:</div>
-        <div id="produto-data">@Violao.DataCadastro.ToString("dd/MM/yyyy")</div>
+        <div id="produto-data">@Produto.DataCadastro.ToString("dd/MM/yyyy")</div>
         
         <div class="label">Ativo:</div>
-        <div id="produto-ativo">@Violao.Ativo</div>
+        <div id="produto-ativo">@Produto.Ativo</div>
     </div>
 
     <hr />
-    
+
+     <h3>Lista de Produtos (foreach)</h3>
+
+    @foreach(var produto in GetProdutos())
+    {
+        <div class="produto-container">
+            <div class="label">ID:</div>
+            <div id="produto-id">@produto.Id</div>
+
+            <div class="label">Nome:</div>
+            <div id="produto-nome">@produto.Nome</div>
+
+            <div class="label">Preço:</div>
+            <div id="produto-preco">@produto.Preco.ToString("N2", new CultureInfo("pt-BR"))</div>
+
+            <div class="label">Data de Cadastro:</div>
+            <div id="produto-data">@produto.DataCadastro.ToString("dd/MM/yyyy")</div>
+
+            <div class="label">Ativo:</div>
+            <div id="produto-ativo">@produto.Ativo</div>
+        </div>
+    }
+
+    <h3>Lista de Produtos (for)</h3>
+
+    @for(var i = 0; i < Produtos.Count; i++)
+    {
+        <span> Produto número : @(i + 1) </span>
+        <div class="produto-container">
+            <div class="label">ID:</div>
+            <div id="produto-id">@Produtos[i].Id</div>
+
+            <div class="label">Nome:</div>
+            <div id="produto-nome">@Produtos[i].Nome</div>
+
+            <div class="label">Preço:</div>
+            <div id="produto-preco">@Produtos[i].Preco.ToString("N2", new CultureInfo("pt-BR"))</div>
+
+            <div class="label">Data de Cadastro:</div>
+            <div id="produto-data">@Produtos[i].DataCadastro.ToString("dd/MM/yyyy")</div>
+
+            <div class="label">Ativo:</div>
+            <div id="produto-ativo">@Produtos[i].Ativo</div>
+        </div>
+    }
+
 </body>
 </html>
 
@@ -54,7 +99,9 @@
 
 @code {
 
-    public Produto Violao { get { return GetProduto(); } }
+    public Produto Produto { get { return GetProduto(); } }
+
+    public List<Produto> Produtos { get { return GetProdutos(); } }
 
     private Produto GetProduto()
     {
@@ -66,6 +113,45 @@
                 DataCadastro = DateTime.Now,
                 Ativo = true
             };
+    }
+
+    private List<Produto> GetProdutos()
+    {
+        return new List<Produto>()
+        {
+            new Produto()
+            {
+                Id = 1,
+                Nome = "Violão",
+                Preco = 2500.00m,
+                DataCadastro = DateTime.Now,
+                Ativo = true
+            },
+             new Produto()
+            {
+                Id = 2,
+                Nome = "Guitarra",
+                Preco =3500.00m,
+                DataCadastro = DateTime.Now,
+                Ativo = true
+            },
+             new Produto()
+            {
+                Id = 3,
+                Nome = "Teclado",
+                Preco = 6500.00m,
+                DataCadastro = DateTime.Now,
+                Ativo = true
+            },
+             new Produto()
+            {
+                Id = 4,
+                Nome = "Saxofone",
+                Preco = 4500.00m,
+                DataCadastro = DateTime.Now,
+                Ativo = true
+            }
+        };
     }
 
 }
