@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31911.196
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33829.357
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorApp_Razor", "BlazorApp_Razor\BlazorApp_Razor.csproj", "{74E8D980-94AA-4BB0-A949-4874EE3D9DD3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorApp_Razor", "BlazorApp_Razor\BlazorApp_Razor.csproj", "{74E8D980-94AA-4BB0-A949-4874EE3D9DD3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

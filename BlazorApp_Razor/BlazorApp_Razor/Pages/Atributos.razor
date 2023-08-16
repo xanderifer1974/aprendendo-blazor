@@ -1,0 +1,23 @@
+﻿@page "/atributos"
+
+<h3>Atributos</h3>
+
+<button @onclick="AlterarEstado">Alterar Estado </button>
+
+<br />
+
+Input Disabled :<input disabled="@Estado" />
+<br />
+Input ReadOnly :<input readonly="@Estado" />
+<br />
+CheckBox checked :<input type="checkbox" checked="@Estado" />
+
+
+
+@code {
+    public bool Estado { get; set; } 
+    private void AlterarEstado()
+    {
+        Estado = !Estado;
+    }
+}
