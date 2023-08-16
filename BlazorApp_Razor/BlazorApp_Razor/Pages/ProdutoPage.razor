@@ -22,6 +22,10 @@
         .label {
             font-weight: bold;
         }
+        .display{
+            color:red;
+            font-weight:bold;
+        }
     </style>
 </head>
 <body>
@@ -30,8 +34,8 @@
 
     <div class="produto-container">
         <div class="label">ID:</div>
-        <div id="produto-id">@Produto.Id</div>
-        
+        <div id="produto-id">@Produto.Id</div>     
+
         <div class="label">Nome:</div>
         <div id="produto-nome">@Produto.Nome</div>
         
@@ -43,6 +47,17 @@
         
         <div class="label">Ativo:</div>
         <div id="produto-ativo">@Produto.Ativo</div>
+
+        @if (Produto.Nome.Contains("Violão"))
+        {   <hr />
+            <span class="display">O produto violão está com desconto de 10% de desconto.</span>
+        }
+
+        @if (Produto.Nome.Contains("Saxofone"))
+        {
+            <hr />
+            <span class="display">O produto saxofone está com desconto de 30% de desconto.</span>
+        }
     </div>
 
     <hr />
@@ -66,6 +81,18 @@
 
             <div class="label">Ativo:</div>
             <div id="produto-ativo">@produto.Ativo</div>
+
+            @if (produto.Nome.Contains("Violão"))
+            {
+                   <hr />
+                <span class="display">O produto violão está com desconto de 10% de desconto.</span>
+            }
+
+            @if (produto.Nome.Contains("Saxofone"))
+            {
+                <hr />
+                <span class="display">O produto saxofone está com desconto de 30% de desconto.</span>
+            }
         </div>
     }
 
@@ -89,6 +116,18 @@
 
             <div class="label">Ativo:</div>
             <div id="produto-ativo">@Produtos[i].Ativo</div>
+
+            @if (Produtos[i].Nome.Contains("Violão"))
+            {
+                   <hr />
+                <span class="display">O produto violão está com desconto de 10% de desconto.</span>
+            }
+
+            @if (Produtos[i].Nome.Contains("Saxofone"))
+            {
+                <hr />
+                <span class="display">O produto saxofone está com desconto de 30% de desconto.</span>
+            }
         </div>
     }
 
