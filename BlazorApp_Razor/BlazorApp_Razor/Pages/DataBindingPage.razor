@@ -22,11 +22,37 @@
             color: red;
             font-weight: bold;
         }
+
+        .saudacao {
+            color: green;
+            font-weight: bold;
+        }
+
+        .two-way{
+            background-color:yellow;
+            color:black;
+            font-size:15px;
+            border:1px solid;  
+            padding:10px;
+        }
     </style>
 </head>
 <body>
     <h1>One-Way DataBinding</h1>
     
+    <h2 class="display">@Mensagem</h2>
+    <h2 class="saudacao">@Saudacao()</h2>
+    
+    <button class="btn-info" @onclick="AtualizaMensagem">Atualizar Mensagem </button>
+
+    <hr />
+
+    <h1>Two-Way DataBinding</h1>
+    <div class="two-way">
+         @twoAwayDataBinding
+    </div>
+    <hr />
+    <input @bind="twoAwayDataBinding"  placeholder="Digite aqui sua mensagem"/>
     
 
 </body>
@@ -35,9 +61,21 @@
 
 
 @code {
+    private string Mensagem = $"Hoje é dia {DateTime.Now.ToString("dd/MM/yyyy")}";
+    private string twoAwayDataBinding = "";
 
 
-    
+    private string NovaMensgem = "Esta mensagem foi atualizada";
+    private string Saudacao()
+    {
+        return "Bem vindo aos nossos estudos.";
+    }
+
+    private void AtualizaMensagem()
+    {
+        Mensagem = NovaMensgem;
+    }
+
 
 }
 
