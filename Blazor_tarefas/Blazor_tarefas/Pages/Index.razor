@@ -28,9 +28,8 @@ else
         <tbody>
             @foreach (var item in tarefas)
             {
-                <tr>
-                    @*Falta ver a lógica*@
-                    <td><button @onclick="@(() =>RemoverTarefa())"><i class="oi oi-trash"></i></button></td>
+                <tr>                   
+                    <td><button @onclick="@(() =>RemoverTarefa(item.Id))"><i class="oi oi-trash"></i></button></td>
                     <td>@item.DataCriacao</td>
                     <td>@item.Descricao</td>
                     <td><input type="checkbox" @bind="item.Concluida" />@item.Concluida</td>                    
@@ -74,9 +73,9 @@ else
         }
     }
 
-    void RemoverTarefa()
+    void RemoverTarefa(Guid id)
     {
-        
+        tarefas.Remove(tarefas.First(x => x.Id == id));
     }
 
 
