@@ -2,7 +2,7 @@
 
 namespace Blazor_tarefas.Models
 {
-    public class Tarefas
+    public class Tarefa
     {
         public Guid Id { get; set; }
         public string Descricao { get; set; }

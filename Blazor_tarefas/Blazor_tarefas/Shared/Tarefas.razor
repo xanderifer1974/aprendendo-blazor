@@ -1,5 +1,5 @@
-﻿@inject HttpClient http
-
+﻿
+<h1>@Titulo</h1>
 
 @if (tarefas == null)
 {
@@ -47,19 +47,18 @@ else
 
 @code {
 
-    protected override async Task OnInitializedAsync()
-    {
-        tarefas = await http.GetFromJsonAsync<List<Tarefas>>("dados/tarefas.json");
-    }
+   [Parameter] public List<Tarefa> tarefas { get; set; }
+   [Parameter] public string Titulo { get; set; }
+
     private string novaTarefa = "";
 
-    private List<Tarefas> tarefas = new List<Tarefas>();
+   
 
     void AdicionarNovaTarefa()
     {
         if (!string.IsNullOrEmpty(novaTarefa))
         {
-            tarefas.Add(new Tarefas
+            tarefas.Add(new Tarefa
                 {
                     DataCriacao = DateTime.Now,
                     Descricao = novaTarefa,
