@@ -1,0 +1,16 @@
+﻿@page "/databinding"
+
+<h1>@nome</h1>
+
+<hr />
+
+<!-- No caso abaixo, temos por padrão o evento onchange, que só atualiza quando perde o foco. -->
+<input @bind="nome" />
+
+<hr />
+<!-- Neste caso estamos associando o bind a um evento específico -->
+<input @bind-value="nome" @bind-value:event="oninput"/>
+
+@code {
+    public string nome { get; set; } = "Blazor";
+}
