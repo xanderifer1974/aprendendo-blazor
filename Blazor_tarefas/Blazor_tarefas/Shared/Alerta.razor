@@ -1,8 +1,16 @@
-﻿<div class="alert alert-danger mt-4" role="alert">
-    <span class="oi oi-circle-x mr-2" aria-hidden="true"></span>
-    <strong>@Mensagem</strong>
+﻿<div>
+   @if(@ChildContent == null)
+   {
+        <div class="alert alert-danger mt-4" role="alert">
+            <span class="oi oi-circle-x mr-2" aria-hidden="true"> Tarefas não carregadas... </span>
+        </div>
+   }else{
+       @ChildContent
+   }
+
 </div>
 
-@code {
-   [Parameter] public string  Mensagem { get; set; }
+@code {   
+
+   [Parameter] public RenderFragment ChildContent { get; set; }
 }

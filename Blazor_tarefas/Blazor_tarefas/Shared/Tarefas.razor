@@ -3,11 +3,16 @@
 
 @if (tarefas == null)
 {
-    <Alerta Mensagem="Carregando" />
+    <Alerta>       
+    </Alerta>
 }
 else if (!tarefas.Any())
 {
-    <Alerta Mensagem="Ainda não existem tarefas" />
+    <Alerta>
+        <div class="alert alert-danger mt-4" role="alert">
+            <span class="oi oi-circle-x mr-2" aria-hidden="true"> Ainda não existem tarefas </span>
+        </div>
+    </Alerta>
 }
 else
 {
