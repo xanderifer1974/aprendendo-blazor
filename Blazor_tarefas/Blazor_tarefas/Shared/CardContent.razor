@@ -1,0 +1,21 @@
+﻿<style>
+    /* Estilize o card */
+    .card {
+        width: 300px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        overflow: hidden;
+        margin: 20px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }   
+</style>
+
+<div class="card">
+    @Content1
+    @Content2
+</div>
+@code {
+    [Parameter] public RenderFragment Content1 { get; set; }
+    [Parameter] public RenderFragment Content2 { get; set; }
+
+}

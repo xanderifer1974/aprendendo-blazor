@@ -27,6 +27,13 @@
             </NavLink>
         </li>
     </ul>
+    <ul class="nav flex-column">
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="/render-fragment-content" Match="NavLinkMatch.All">
+                <span class="oi oi-cloud-download" aria-hidden="true"></span> RenderFragment
+            </NavLink>
+        </li>
+    </ul>
 </div>
 
 @code {
@@ -38,4 +45,6 @@
     {
         collapseNavMenu = !collapseNavMenu;
     }
+
+    ///render-fragment-content
 }
