@@ -1,0 +1,46 @@
+﻿@typeparam Titem
+
+
+@if (ListaItem == null)
+{
+    if(Carregando == null)
+    {
+        <iframe src="https://giphy.com/embed/3oEjI6SIIHBdRxXI40" width="480" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+        <text>Carregando...</text>
+       
+
+    }
+    else
+    {
+        @Carregando
+    }
+}
+else if (!ListaItem.Any())
+{
+    if(SemRegistro == null)
+    {
+        <iframe src="https://giphy.com/embed/3a53VvGpzUgh05qq7W" width="422" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+        <text>Não existe tarefas cadastradas</text>
+
+        
+    }
+    else
+    {
+        @SemRegistro
+    }
+}
+else
+{
+    foreach(var elemento in ListaItem)
+    {
+        @Lista(elemento);
+    }
+}
+
+@code {
+   [Parameter] public RenderFragment Carregando { get; set; }
+   [Parameter] public RenderFragment SemRegistro { get; set; }
+   [Parameter] public List<Titem> ListaItem { get; set; }
+   [Parameter] public RenderFragment<Titem> Lista { get; set; }
+
+}

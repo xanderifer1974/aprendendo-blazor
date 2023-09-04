@@ -1,0 +1,20 @@
+﻿@page "/tarefas-genericas"
+@inject HttpClient http
+
+<TarefaComListaGenerica tarefas="GetTarefas()" Titulo="Lista de Tarefas - Lista Genérica"/>
+
+
+@code {
+
+    List<Tarefa> tarefasGenericas = new List<Tarefa>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        tarefasGenericas = await http.GetFromJsonAsync<List<Tarefa>>("dados/tarefasGenericas.json");
+    }
+
+    private List<Tarefa> GetTarefas()
+    {
+        return tarefasGenericas;
+    }
+}

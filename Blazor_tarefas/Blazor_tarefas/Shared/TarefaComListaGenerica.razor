@@ -1,0 +1,63 @@
+﻿
+<h1>@Titulo</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <td>Ação</td>
+            <th>Data</th>
+            <th>Descricao</th>
+            <th>Concluida</th>
+        </tr>
+    </thead>
+    <tbody>
+        <ListaGenerica ListaItem="tarefas">
+            <Lista Context="tarefaIndividual">
+                <tr>
+                    <TarefaIndividual item="tarefaIndividual" RemoverTarefa="RemoverTarefa" />
+                </tr>
+            </Lista>
+        </ListaGenerica>
+    </tbody>
+</table>
+
+@if (tarefas != null)
+{
+    <div class="form-group">
+        <label>Tarefa</label>
+        <input type="text" placeholder="Informe a tarefa" @bind="novaTarefa" />
+        <button class="btn btn-primary" @onclick="AdicionarNovaTarefa">Registrar Tarefa</button>
+    </div>
+}
+
+
+
+@code {
+
+    [Parameter] public List<Tarefa> tarefas { get; set; }
+    [Parameter] public string Titulo { get; set; }
+
+    private string novaTarefa = "";
+
+
+
+    void AdicionarNovaTarefa()
+    {
+        if (!string.IsNullOrEmpty(novaTarefa))
+        {
+            tarefas.Add(new Tarefa
+                {
+                    DataCriacao = DateTime.Now,
+                    Descricao = novaTarefa,
+                    Id = Guid.NewGuid()
+                });
+        }
+    }
+
+    void RemoverTarefa(Tarefa tarefa)
+    {
+        tarefas.Remove(tarefas.First(x => x.Id == tarefa.Id));
+    }
+
+
+}
