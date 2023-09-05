@@ -1,9 +1,42 @@
 ﻿@page "/"
+@implements IDisposable
 
-<PageTitle>Index</PageTitle>
+<h1>@Titulo</h1>
+<h2>Fui renderizado as @HoraRenderizacao</h2>
 
-<h1>Hello, world!</h1>
+@code{
+    private string? Titulo { get; set; }
+    private string? HoraRenderizacao { get; set; }
 
-Welcome to your new app.
 
-<SurveyPrompt Title="How is Blazor working for you?" />
+    protected override void OnInitialized()
+    {
+        HoraRenderizacao = DateTime.Now.ToLongTimeString();
+        Console.WriteLine($"Iniciação do componente as : {HoraRenderizacao}");
+        Titulo = "Aprendendo sobre Ciclo de Vida do componente";
+    }
+
+    protected override void OnParametersSet()
+    {
+        HoraRenderizacao = DateTime.Now.ToLongTimeString();
+        Console.WriteLine($"Executei o método OnParameterSet : as {HoraRenderizacao}");
+        Console.WriteLine(" --> Recebimento dos parâmetros do componente pai.");
+
+    }
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        HoraRenderizacao = DateTime.Now.ToLongTimeString();
+        Console.WriteLine($"Executei o método  OnAfterRender: Primeira vez = {firstRender}");
+        Console.WriteLine($"-- Término de renderização do componente: às {HoraRenderizacao}");        
+    }
+
+    public void Dispose()
+    {
+        HoraRenderizacao = DateTime.Now.ToLongTimeString();
+        Console.WriteLine($"-- Liberação do componente : as {HoraRenderizacao}");
+       
+    }
+
+
+}
