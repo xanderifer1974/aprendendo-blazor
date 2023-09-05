@@ -1,7 +1,6 @@
 ﻿@page "/counter"
-@inject ServicoSingleton singleton
-@inject ServicoScoped scoped
-@inject ServicoTransient transient
+
+@inherits CounterBase
 
 <h1>Counter</h1>
 
@@ -13,14 +12,4 @@
 
 <button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
 
-@code {
-    private int currentCount = 0;
 
-    private void IncrementCount()
-    {
-        currentCount++;
-        singleton.Valor = currentCount;
-        scoped.Valor = currentCount;
-        transient.Valor = currentCount;
-    }
-}
