@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33829.357
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorCicloDeVida", "BlazorCicloDeVida.csproj", "{296EA645-B60F-413B-8200-DF6C913EE43B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorCicloDeVida", "BlazorCicloDeVida.csproj", "{296EA645-B60F-413B-8200-DF6C913EE43B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazzorApp_Injecao_Dependencia", "..\BlazzorApp_Injecao_Dependencia\BlazzorApp_Injecao_Dependencia.csproj", "{0FF5256A-412E-414F-A8EB-0DA4B2B01B1E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{296EA645-B60F-413B-8200-DF6C913EE43B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{296EA645-B60F-413B-8200-DF6C913EE43B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{296EA645-B60F-413B-8200-DF6C913EE43B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0FF5256A-412E-414F-A8EB-0DA4B2B01B1E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0FF5256A-412E-414F-A8EB-0DA4B2B01B1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0FF5256A-412E-414F-A8EB-0DA4B2B01B1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0FF5256A-412E-414F-A8EB-0DA4B2B01B1E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
