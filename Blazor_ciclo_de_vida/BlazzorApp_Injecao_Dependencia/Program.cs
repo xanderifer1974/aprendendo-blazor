@@ -1,3 +1,4 @@
+using BlazzorApp_Injecao_Dependencia.Servicos;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -18,6 +19,9 @@ namespace BlazzorApp_Injecao_Dependencia
             builder.RootComponents.Add<App>("#app");
 
             builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
+            builder.Services.AddSingleton<ServicoSingleton>();
+            builder.Services.AddScoped<ServicoScoped>();
+            builder.Services.AddTransient<ServicoTransient>();
 
             await builder.Build().RunAsync();
         }
