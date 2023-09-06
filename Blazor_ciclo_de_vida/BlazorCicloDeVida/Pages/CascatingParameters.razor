@@ -1,0 +1,15 @@
+﻿@page "/cascating-parameters"
+
+<CascadingValue Value="@Cor" Name="CorDeFundo">
+    <CascadingValue Value="@Tamanho" Name="TamanhoDaFonte">
+        <FormatacaoCascatingParameters>
+
+        </FormatacaoCascatingParameters>
+    </CascadingValue>
+</CascadingValue>
+
+@code {
+    private string Cor = "green";
+    private string Tamanho = "20px";
+
+}

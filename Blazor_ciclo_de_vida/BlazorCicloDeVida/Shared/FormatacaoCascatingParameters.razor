@@ -1,0 +1,14 @@
+﻿<h3>FormatacaoCascatingParameters</h3>
+
+<body style="background-color:@CorDeFundo">
+    <h1>Múltiplos parâmtros com Cascating Parameter</h1>    
+    <p style="font-size:@TamanhoDaFonte">
+        Aqui estou aplicando o parâmetro tamanho da fonte
+    </p>
+</body>
+
+@code{
+
+    [CascadingParameter(Name ="CorDeFundo")] string CorDeFundo { get; set; }
+    [CascadingParameter(Name ="TamanhoDaFonte")] string TamanhoDaFonte { get; set; }
+}
