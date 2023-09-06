@@ -20,6 +20,31 @@
     </tbody>
 </table>
 
+<hr />
+<!-- Formulário de entrada de dados -->
+<form>
+    <div class="form-group">
+        <label for="nome">Nome:</label>
+        <input type="text" class="form-control" id="nome" @bind="@pessoaConfig.Nome">
+    </div>
+    <div class="form-group">
+        <label for="rua">Rua:</label>
+        <input type="text" class="form-control" id="rua" @bind="@pessoaConfig.Rua">
+    </div>
+    <div class="form-group">
+        <label for="bairro">Bairro:</label>
+        <input type="text" class="form-control" id="bairro" @bind="@pessoaConfig.Bairro">
+    </div>
+    <div class="form-group">
+        <label for="cidade">Cidade:</label>
+        <input type="text" class="form-control" id="cidade" @bind="@pessoaConfig.Cidade">
+    </div>
+    <div class="form-group">
+        <label for="estado">Estado:</label>
+        <input type="text" class="form-control" id="estado" @bind="@pessoaConfig.Estado">
+    </div>  
+</form>
+
 @code {
    [CascadingParameter] PessoaConfig pessoaConfig { get; set; }
 }
