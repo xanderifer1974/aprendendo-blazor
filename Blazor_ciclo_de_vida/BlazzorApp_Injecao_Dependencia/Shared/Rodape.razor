@@ -1,5 +1,14 @@
 ﻿<footer>
     <div class="rodape-container">
-        <p>&copy; 2023 Aprendendo Blazzor</p>
+        <p>&copy; @getAno() Aprendendo Blazzor</p>
     </div>
 </footer>
+@code{
+    private DateTime dataHoje = DateTime.Now;
+
+    public string getAno(){
+
+        return dataHoje.Year.ToString();
+    }
+  
+}
