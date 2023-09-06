@@ -5,7 +5,7 @@ VisualStudioVersion = 17.6.33829.357
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorCicloDeVida", "BlazorCicloDeVida.csproj", "{296EA645-B60F-413B-8200-DF6C913EE43B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazzorApp_Injecao_Dependencia", "..\BlazzorApp_Injecao_Dependencia\BlazzorApp_Injecao_Dependencia.csproj", "{0FF5256A-412E-414F-A8EB-0DA4B2B01B1E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazzorApp_Injecao_Dependencia", "..\BlazzorApp_Injecao_Dependencia\BlazzorApp_Injecao_Dependencia.csproj", "{0FF5256A-412E-414F-A8EB-0DA4B2B01B1E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
