@@ -1,0 +1,25 @@
+﻿<h1>Tabela de Pessoa</h1>
+<table>
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Rua</th>
+            <th>Bairro</th>
+            <th>Cidade</th>
+            <th>Estado</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>@pessoaConfig.Nome</td>
+            <td>@pessoaConfig.Rua</td>
+            <td>@pessoaConfig.Bairro</td>
+            <td>@pessoaConfig.Cidade</td>
+            <td>@pessoaConfig.Estado</td>
+        </tr>        
+    </tbody>
+</table>
+
+@code {
+   [CascadingParameter] PessoaConfig pessoaConfig { get; set; }
+}
