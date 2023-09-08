@@ -1,0 +1,80 @@
+﻿<h1>@Titulo</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Ação</th>
+            <th>Data</th>
+            <th>Descriçao</th>
+            <th>Concluida</th>
+        </tr>
+    </thead>
+    <tbody>
+        <ListaGenerica ListaItem="tarefas">
+            <Lista Context="tarefa">
+                <TarefaIndividual item="tarefa" RemoverTarefa="RemoveTarefa" />
+            </Lista>
+        </ListaGenerica>
+    </tbody>
+</table>
+
+<Confirma @ref="confirmacao" onCancela="CancelaConfirmacao" 
+          onConfirma="RemoverTarefaConfirmacao">
+    <div>Deseja Excluir esta tarefa ?</div>
+</Confirma>
+
+@if (tarefas != null)
+{
+    <div class="form-group">
+        <label>Tarefa</label>
+        <input type="Text" placeholder="Informe a tarefa" @bind="novaTarefa" />
+        <button class="btn btn-primary" @onclick="AdicionarNovaTarefa">Registrar Tarefa</button>
+    </div>
+}
+
+@code{
+
+    [Parameter] public List<Tarefa> tarefas { get; set; }
+    [Parameter] public string Titulo { get; set; }
+
+    private string novaTarefa = "";
+
+    //instancia do componente Confirma 
+    Confirma confirmacao;
+
+    Tarefa tarefaRemover;
+
+    private void RemoveTarefa(Tarefa tarefa)
+    {
+        confirmacao.Exibir();
+        tarefaRemover = tarefa;
+        
+    }
+
+    void RemoverTarefaConfirmacao()
+    {
+        tarefas.Remove(tarefaRemover);
+        tarefaRemover = null;
+        confirmacao.Ocultar();
+    }
+
+    void CancelaConfirmacao()
+    {
+        confirmacao.Ocultar();
+        tarefaRemover = null;
+    }
+
+    void AdicionarNovaTarefa()
+    {
+        if (!string.IsNullOrWhiteSpace(novaTarefa))
+        {
+            tarefas.Add(new Tarefa
+            {
+                DataCriacao = DateTime.Now,
+                Descricao = novaTarefa,
+                ID = Guid.NewGuid()
+            });
+            novaTarefa = "";
+        }
+    }
+}

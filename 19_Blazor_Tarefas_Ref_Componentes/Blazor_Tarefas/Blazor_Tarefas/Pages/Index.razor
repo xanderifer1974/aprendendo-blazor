@@ -1,0 +1,18 @@
+﻿@page "/"
+@inject IRepositorio repositorio
+
+<Tarefas tarefas="GetTarefas()" Titulo="Lista de tarefas"/>
+
+@code {
+    List<Tarefa> tarefas = new List<Tarefa>();
+
+    protected override void OnInitialized()
+    {
+        tarefas = repositorio.ObterTarefas();
+    }
+
+    private List<Tarefa> GetTarefas()
+    {
+        return tarefas;
+    }
+}
