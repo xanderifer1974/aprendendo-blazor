@@ -1,0 +1,19 @@
+﻿<div style="text-align:center">
+    <h3>
+        @Titulo
+    </h3>
+    <p>
+        <a href="#", target="_blank">Visite nossa loja</a>
+    </p>
+    <p>
+        <img @attributes="ParametrosAdicionais" />
+    </p>
+</div>
+
+@code {
+
+   [Parameter] public string? Titulo { get; set; }
+
+   [Parameter(CaptureUnmatchedValues =true)]
+   public Dictionary<string,object>? ParametrosAdicionais { get; set; }
+}
