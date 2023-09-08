@@ -34,6 +34,11 @@ else
             }
         </tbody>
     </table>
+
+    <Confirma @ref="confirmacao" >
+        <div>Deseja excluir esta tarefa?</div>
+    </Confirma>
+
 }
 
 @if (tarefas != null)
@@ -49,12 +54,12 @@ else
 
 @code {
 
-   [Parameter] public List<Tarefa> tarefas { get; set; }
-   [Parameter] public string Titulo { get; set; }
+    [Parameter] public List<Tarefa> tarefas { get; set; }
+    [Parameter] public string Titulo { get; set; }
 
     private string novaTarefa = "";
 
-   
+
 
     void AdicionarNovaTarefa()
     {
@@ -69,9 +74,12 @@ else
         }
     }
 
+    Confirma confirmacao;
+
     void RemoverTarefa(Tarefa tarefa)
     {
-        tarefas.Remove(tarefas.First(x => x.Id == tarefa.Id));
+        confirmacao.Exibir();
+        //tarefas.Remove(tarefas.First(x => x.Id == tarefa.Id));
     }
 
 
