@@ -3,7 +3,12 @@
 @using BlazorAppDemo.Data
 @inject WeatherForecastService ForecastService
 
-<h1>Weather forecast</h1>
+<h1>
+
+    <Aviso Exibir="Exibir">
+        @Mensagem
+    </Aviso>
+</h1>
 
 <p>This component demonstrates fetching data from a service.</p>
 
@@ -13,30 +18,35 @@
 }
 else
 {
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Date</th>
-                <th>Temp. (C)</th>
-                <th>Temp. (F)</th>
-                <th>Summary</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var forecast in forecasts)
-            {
-                <tr>
-                    <td>@forecast.Date.ToShortDateString()</td>
-                    <td>@forecast.TemperatureC</td>
-                    <td>@forecast.TemperatureF</td>
-                    <td>@forecast.Summary</td>
-                </tr>
-            }
-        </tbody>
-    </table>
+    <GridComponent Itens="@forecasts">
+        <Cabecalho>
+            <th>Data</th>
+            <th>Temperatura (Celsius)</th>
+            <th>Temperatura (Fahrenheit)</th>
+            <th>Resumo</th>
+        </Cabecalho>
+        <Linha Context="forecast">
+            <td>@forecast.Date</td>
+            <td>@forecast.TemperatureC</td>
+            <td>@forecast.TemperatureF</td>
+            <td>@forecast.Summary</td>
+        </Linha>
+        <Rodape>
+            <td colspan="4">
+                <Aviso Exibir=Exibir>
+                    @Mensagem
+                </Aviso>
+            </td>
+        </Rodape>
+    </GridComponent>  
 }
 
 @code {
+    bool Exibir = true;
+
+    [Parameter]
+    public string Mensagem { get; set; } = "Previsão do Tempo - Janeiro";
+
     private WeatherForecast[] forecasts;
 
     protected override async Task OnInitializedAsync()
