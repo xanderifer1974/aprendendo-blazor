@@ -1,0 +1,56 @@
+﻿@page "/navegador"
+@inject NavigationManager navegation
+
+<h1> Usando o Navegation Manager</h1>
+
+<button class="btn btn-info" @onclick="Navegar1">Navegar para Macoratti.net</button>
+<br/>
+<br />
+<button class="btn btn-info" @onclick="Navegar2">Navegar para a Counter</button>
+<br />
+<br />
+<button class="btn btn-info" @onclick="Navegar3">Voltar para a Home</button>
+<br />
+<br />
+<button class="btn btn-info" @onclick="ValorUri">URI</button>
+<label>@URI</label>
+<br />
+<br />
+<button class="btn btn-info" @onclick="ValorBaseUri">BaseURI</button>
+<label>@BaseURI</label>
+<br />
+
+@code {
+
+    [Parameter]
+    public string URI { get; set; }
+
+    [Parameter]
+    public String BaseURI { get; set; }
+
+
+
+    public void Navegar1()
+    {
+        navegation.NavigateTo("http://www.macoratti.net");
+    }
+
+    public void Navegar2()
+    {
+        navegation.NavigateTo("/counter");
+    }
+    public void Navegar3()
+    {
+        navegation.NavigateTo("/");
+    }
+
+    public void ValorUri()
+    {
+        URI = navegation.Uri.ToString();
+    }
+
+    public void ValorBaseUri()
+    {
+        BaseURI = navegation.BaseUri.ToString();
+    }
+}
