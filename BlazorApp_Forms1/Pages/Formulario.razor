@@ -1,0 +1,34 @@
+﻿@page  "/formulario"
+
+<h1> My first Blazor Forms</h1>
+
+<div class="container">
+    <h2>Cadastro de Usuário</h2>
+    <EditForm Model="@usuario" OnSubmit="@Submeter">
+        <div class="form-group">
+            <label for="nome">Nome:</label>
+            <InputText id="nome" @bind-Value="usuario.Nome" />
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+           <InputText id="email" @bind-Value="usuario.Email"/>
+        </div>
+        <div class="form-group">
+            <label for="email">Idade:</label>
+            <InputNumber id="idade" @bind-Value="usuario.Idade" />
+        </div>
+        <div class="form-group">
+            <input type="submit" class="btn btn-primary" value="Enviar Formulário">
+        </div>
+    </EditForm>   
+</div>
+
+@code {
+    Usuario usuario = new Usuario();
+
+    private void Submeter()
+    {
+        Console.WriteLine($"Submit: {usuario.Nome} - {usuario.Email} - {usuario.Idade}");
+
+    }
+}
