@@ -4,18 +4,19 @@
 
 <div class="container">
     <h2>Cadastro de Usuário</h2>
-    <EditForm Model="@usuario" OnSubmit="@Submeter">
+    <EditForm Model="@usuario">
+        <DataAnnotationsValidator/>
         <div class="form-group">
             <label for="nome">Nome:</label>
-            <InputText id="nome" @bind-Value="usuario.Nome" />
+            <InputText id="nome" @bind-Value="usuario.Nome" class="form-control" />
         </div>
         <div class="form-group">
             <label for="email">Email:</label>
-           <InputText id="email" @bind-Value="usuario.Email"/>
+            <InputText id="email" @bind-Value="usuario.Email" class="form-control" />
         </div>
         <div class="form-group">
             <label for="email">Idade:</label>
-            <InputNumber id="idade" @bind-Value="usuario.Idade" />
+            <InputNumber id="idade" @bind-Value="usuario.Idade" class="form-control" />
         </div>
         <div class="form-group">
             <input type="submit" class="btn btn-primary" value="Enviar Formulário">
