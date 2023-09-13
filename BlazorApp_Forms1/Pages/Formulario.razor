@@ -1,12 +1,18 @@
 ﻿@page  "/formulario"
 
-<h1> My first Blazor Forms</h1>
+<h1> Meu Primeiro Formulário Blazor</h1>
+
+@if(ultimoSubmit != null)
+{
+    <h4>
+        <b>Status do Último Submit:</b> @ultimoSubmit;
+    </h4>
+}
 
 <div class="container">
     <h2>Cadastro de Usuário</h2>
-    <EditForm Model="@usuario">
-        <DataAnnotationsValidator/>
-        <ValidationSummary/>
+    <EditForm Model="@usuario" OnSubmit="@OnSubmitForm">
+        <DataAnnotationsValidator />      
         <div class="form-group">
             <label for="nome">Nome:</label>
             <InputText id="nome" @bind-Value="usuario.Nome" class="form-control" />
@@ -26,14 +32,49 @@
             <input type="submit" class="btn btn-primary" value="Enviar Formulário">
         </div>
     </EditForm>   
+    @*<EditForm Model="@usuario" OnValidSubmit="@ValidFormSubmitido"
+              OnInvalidSubmit="@InvalidFormSubmetido">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+        <div class="form-group">
+            <label for="nome">Nome:</label>
+            <InputText id="nome" @bind-Value="usuario.Nome" class="form-control" />
+            <ValidationMessage For="() => usuario.Nome" />
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <InputText id="email" @bind-Value="usuario.Email" class="form-control" />
+            <ValidationMessage For="() => usuario.Email" />
+        </div>
+        <div class="form-group">
+            <label for="email">Idade:</label>
+            <InputNumber id="idade" @bind-Value="usuario.Idade" class="form-control" />
+            <ValidationMessage For="@(() => usuario.Idade)" />
+        </div>
+        <div class="form-group">
+            <input type="submit" class="btn btn-primary" value="Enviar Formulário">
+        </div>
+    </EditForm>*@
 </div>
 
 @code {
     Usuario usuario = new Usuario();
+    string ultimoSubmit;
 
-    private void Submeter()
+    private void ValidFormSubmitido(EditContext editContext)
     {
-        Console.WriteLine($"Submit: {usuario.Nome} - {usuario.Email} - {usuario.Idade}");
+        ultimoSubmit = $"OnValidSubmit foi executado. O formulário  é  valido? {editContext.Validate()}";
+    }
 
+    private void InvalidFormSubmetido(EditContext editContext)
+    {
+        ultimoSubmit = $"OnInvalidValidSubmit foi executado. O formulário  é  valido? {editContext.Validate()}";
+    }
+
+    private void OnSubmitForm(EditContext editContext)
+    {
+        bool formIsValid = editContext.Validate();
+
+        ultimoSubmit = formIsValid ? "Sucesso - Formulário Válido" : "Falhou - Formulário Inválido";
     }
 }
